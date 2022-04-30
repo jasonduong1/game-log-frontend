@@ -5,6 +5,7 @@ export default {
   data: function () {
     return {
       games: [],
+      currentGame: {},
       nextPage: "",
       previousPage: "",
     };
@@ -19,6 +20,16 @@ export default {
       console.log(this.previousPage);
     });
   },
+  methods: {
+    showGame: function (game) {
+      console.log(game.id);
+      axios.get("http://localhost:3000/games/" + game.id).then((response) => {
+        this.currentGame = response.data;
+        console.log(this.currentGame);
+        document.querySelector("#game-details").showModal();
+      });
+    },
+  },
 };
 </script>
 
@@ -27,8 +38,17 @@ export default {
   <div v-for="game in games" :key="game.id">
     <img :src="game.background_image" v-bind:alt="game.name" class="artwork" />
     <h3>{{ game.name }}</h3>
-    <p>Released: {{ game.released }}</p>
+    <button v-on:click="showGame(game)">info</button>
   </div>
+  <dialog id="game-details">
+    <form method="dialog">
+      <img id="dialog" v-bind:src="currentGame.background_image" :alt="currentGame.name" />
+      <h3>{{ currentGame.name }}</h3>
+      <h4>{{ currentGame.released }}</h4>
+      <p>{{ currentGame.description }}</p>
+      <button>Close</button>
+    </form>
+  </dialog>
 </template>
 
 <style>
