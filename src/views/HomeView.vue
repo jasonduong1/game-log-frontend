@@ -1,18 +1,39 @@
-<template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
-</template>
-
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import axios from "axios";
 
 export default {
-  name: "HomeView",
-  components: {
-    HelloWorld,
+  data: function () {
+    return {
+      games: [],
+      nextPage: "",
+      previousPage: "",
+    };
+  },
+  created: function () {
+    axios.get("http://localhost:3000/games").then((response) => {
+      this.games = response.data["results"];
+      this.nextPage = response.data["next"];
+      this.previousPage = response.data["previous"];
+      console.log(this.games);
+      console.log(this.nextPage);
+      console.log(this.previousPage);
+    });
   },
 };
 </script>
+
+<template>
+  <h1>Games</h1>
+  <div v-for="game in games" :key="game.id">
+    <img :src="game.background_image" v-bind:alt="game.name" class="artwork" />
+    <h3>{{ game.name }}</h3>
+    <p>Released: {{ game.released }}</p>
+  </div>
+</template>
+
+<style>
+img {
+  height: 300px;
+  object-fit: cover;
+}
+</style>
