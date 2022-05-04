@@ -3,6 +3,9 @@ import HomeView from "../views/HomeView.vue";
 import SignUp from "../views/SignUp.vue";
 import LogIn from "../views/LogIn.vue";
 import LogOut from "../views/LogOut.vue";
+import LibrariesIndex from "../views/LibrariesIndex.vue";
+import SearchPage from "../views/SearchPage.vue";
+import GameShow from "../views/GameShow.vue";
 
 const routes = [
   {
@@ -32,6 +35,21 @@ const routes = [
     path: "/logout",
     name: "logout",
     component: LogOut,
+  },
+  {
+    path: "/libraries",
+    name: "libraries",
+    component: LibrariesIndex,
+  },
+  {
+    path: "/search",
+    name: "search",
+    component: SearchPage,
+  },
+  {
+    path: "/games/:id",
+    name: "show game",
+    component: GameShow,
   },
 ];
 
