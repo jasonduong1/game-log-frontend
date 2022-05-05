@@ -44,39 +44,45 @@ export default {
 
 <template>
   <h1>Game Log</h1>
-  <div v-for="entry in entries" :key="entry">
-    <p>
-      title: {{ entry.title }}
-      <a v-bind:href="`/games/${entry.game_id}`" class="btn btn-primary">Info</a>
-      rating: {{ entry.rating }} progress: {{ entry.progress }}
-      <button v-on:click="destroyEntry(entry)">Remove</button>
-      <button v-on:click="editEntry(entry)">edit</button>
-    </p>
-    <dialog id="game-details">
-      <form method="dialog" v-on:submit.prevent="updateEntry(entry)">
-        <h2>Edit Log</h2>
-        <h3>{{ currentEntry.title }}</h3>
-        <div>
-          Progress:
-          <input type="text" v-model="currentEntry.progress" />
-        </div>
-        <div>
-          Rating:
-          <input type="text" v-model="currentEntry.rating" />
-        </div>
-        <div>
-          Review:
-          <input type="text" v-model="currentEntry.review" />
-        </div>
-        <div>
-          Thoughts/notes:
-          <input type="text" v-model="currentEntry.note" />
-          <br />
-          <input type="submit" value="Update" />
-          <!-- option: add update status text when update button is pressed -->
-        </div>
-        <a href="/libraries">Back to log</a>
-      </form>
-    </dialog>
-  </div>
+  <ol>
+    <div v-for="entry in entries" :key="entry">
+      <li>
+        title:
+        {{ entry.title }}
+        <a v-bind:href="`/games/${entry.game_id}`" class="btn btn-primary">Info</a>
+        rating:
+        {{ entry.rating }}
+        progress:
+        {{ entry.progress }}
+        <button v-on:click="destroyEntry(entry)">Remove</button>
+        <button v-on:click="editEntry(entry)">edit</button>
+      </li>
+      <dialog id="game-details">
+        <form method="dialog" v-on:submit.prevent="updateEntry(entry)">
+          <h2>Edit Log</h2>
+          <h3>{{ currentEntry.title }}</h3>
+          <div>
+            Progress:
+            <input type="text" v-model="currentEntry.progress" />
+          </div>
+          <div>
+            Rating:
+            <input type="text" v-model="currentEntry.rating" />
+          </div>
+          <div>
+            Review:
+            <input type="text" v-model="currentEntry.review" />
+          </div>
+          <div>
+            Thoughts/notes:
+            <input type="text" v-model="currentEntry.note" />
+            <br />
+            <input type="submit" value="Update" />
+            <!-- option: add update status text when update button is pressed -->
+          </div>
+          <a href="/libraries">Back to log</a>
+        </form>
+      </dialog>
+    </div>
+  </ol>
 </template>
