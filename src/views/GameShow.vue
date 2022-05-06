@@ -6,12 +6,18 @@ export default {
     return {
       game: {},
       currentGame: {},
+      entry: {},
+      currentEntry: {},
     };
   },
   created: function () {
     axios.get("http://localhost:3000/games/" + this.$route.params.id).then((response) => {
       console.log(response.data);
       this.game = response.data;
+    });
+    axios.get("http://localhost:3000/libraries?game_id=" + this.$route.params.id).then((response) => {
+      console.log(response.data);
+      this.entry = response.data;
     });
   },
   methods: {
@@ -24,6 +30,29 @@ export default {
         .post("http://localhost:3000/libraries", this.currentGame)
         .then((response) => {
           console.log("Success", response.data);
+        })
+        .catch((error) => console.log(error.response));
+    },
+    editEntry: function (entry) {
+      axios.get("http://localhost:3000/libraries/" + entry.id).then((response) => {
+        this.currentEntry = response.data;
+        console.log(this.currentEntry);
+        document.querySelector("#game-details").showModal();
+      });
+    },
+    destroyEntry: function (entry) {
+      axios.delete("http://localhost:3000/libraries/" + entry.id).then((response) => {
+        console.log("entry destroy", response);
+        this.$router.go();
+      });
+    },
+    updateEntry: function (entry) {
+      console.log("Update entry.");
+      axios
+        .patch("http://localhost:3000/libraries/" + entry.id, this.currentEntry)
+        .then((response) => {
+          console.log("Edited", response.data);
+          this.$router.go();
         })
         .catch((error) => console.log(error.response));
     },
@@ -40,9 +69,38 @@ export default {
   <button v-on:click="addLibrary(game)">Add to library</button>
   <!-- when logged in and title added -->
   <!-- remove button replaces add button -->
-  <!-- body for progress -->
-  <!-- body for rating -->
-  <!-- body for review -->
-  <!-- body for note -->
+  <!-- body for user progress, etc -->
+  <p>Progress: {{ entry.progress }}</p>
+  <p>Rating: {{ entry.rating }}</p>
+  <p>Review: {{ entry.review }}</p>
+  <p>Thoughts/notes: {{ entry.note }}</p>
   <!-- edit button -->
+  <button v-on:click="destroyEntry(entry)">Remove</button>
+  <button v-on:click="editEntry(entry)">edit</button>
+  <dialog id="game-details">
+    <form method="dialog" v-on:submit.prevent="updateEntry(entry)">
+      <h2>Edit Log</h2>
+      <h3>{{ currentEntry.title }}</h3>
+      <div>
+        Progress:
+        <input type="text" v-model="currentEntry.progress" />
+      </div>
+      <div>
+        Rating:
+        <input type="text" v-model="currentEntry.rating" />
+      </div>
+      <div>
+        Review:
+        <input type="text" v-model="currentEntry.review" />
+      </div>
+      <div>
+        Thoughts/notes:
+        <input type="text" v-model="currentEntry.note" />
+        <br />
+        <input type="submit" value="Update" />
+        <!-- option: add update status text when update button is pressed -->
+      </div>
+      <a href="/libraries">Back to log</a>
+    </form>
+  </dialog>
 </template>
