@@ -58,7 +58,7 @@ export default {
         <button v-on:click="editEntry(entry)">edit</button>
       </li>
       <dialog id="game-details">
-        <form method="dialog" v-on:submit.prevent="updateEntry(entry)">
+        <form method="dialog" v-on:submit.prevent="updateEntry(currentEntry)">
           <h2>Edit Log</h2>
           <h3>{{ currentEntry.title }}</h3>
           <div>
