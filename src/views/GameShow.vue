@@ -5,6 +5,7 @@ export default {
   data: function () {
     return {
       game: {},
+      currentGame: {},
     };
   },
   created: function () {
@@ -12,6 +13,20 @@ export default {
       console.log(response.data);
       this.game = response.data;
     });
+  },
+  methods: {
+    addLibrary: function (game) {
+      (this.currentGame.game_id = game.id),
+        (this.currentGame.title = game.name),
+        (this.currentGame.image = game.background_image),
+        console.log("new entry", this.currentGame);
+      axios
+        .post("http://localhost:3000/libraries", this.currentGame)
+        .then((response) => {
+          console.log("Success", response.data);
+        })
+        .catch((error) => console.log(error.response));
+    },
   },
 };
 </script>
@@ -22,6 +37,7 @@ export default {
   <p>{{ game.description_raw }}</p>
   <!-- when logged in -->
   <!-- button to add to library -->
+  <button v-on:click="addLibrary(game)">Add to library</button>
   <!-- when logged in and title added -->
   <!-- remove button replaces add button -->
   <!-- body for progress -->
