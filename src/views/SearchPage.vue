@@ -6,15 +6,28 @@ export default {
     return {
       input: "",
       results: [],
+      currentGame: {},
     };
   },
   methods: {
     search: function () {
-      console.log(this.input);
+      console.log("search query for", this.input);
       axios.get("http://localhost:3000/games?search=" + this.input).then((response) => {
         this.results = response.data["results"];
         console.log(this.results);
       });
+    },
+    addLibrary: function (result) {
+      (this.currentGame.game_id = result.id),
+        (this.currentGame.title = result.name),
+        (this.currentGame.image = result.background_image),
+        console.log("title to be added", this.currentGame);
+      axios
+        .post("http://localhost:3000/libraries", this.currentGame)
+        .then((response) => {
+          console.log("Success", response.data);
+        })
+        .catch((error) => console.log(error.response));
     },
   },
 };
@@ -29,5 +42,7 @@ export default {
   <div v-for="result in results" :key="result">
     <img :src="result.background_image" v-bind:alt="result.name" class="artwork" />
     <p>{{ result.name }}</p>
+    <!-- button to add to library when logged in -->
+    <button v-on:click="addLibrary(result)">Add to library</button>
   </div>
 </template>
