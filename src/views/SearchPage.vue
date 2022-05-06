@@ -42,6 +42,8 @@ export default {
   <div v-for="result in results" :key="result">
     <img :src="result.background_image" v-bind:alt="result.name" class="artwork" />
     <p>{{ result.name }}</p>
+    <a v-bind:href="`/games/${result.id}`" class="btn btn-primary">More info</a>
+    <br />
     <!-- button to add to library when logged in -->
     <button v-on:click="addLibrary(result)">Add to library</button>
   </div>
