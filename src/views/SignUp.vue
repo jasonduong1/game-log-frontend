@@ -29,8 +29,12 @@ export default {
     <form v-on:submit.prevent="submit()">
       <h1>Signup</h1>
       <ul>
-        <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
+        <p v-for="error in errors" v-bind:key="error">{{ error }}</p>
       </ul>
+      <div>
+        <label>Username:</label>
+        <input type="text" v-model="newUserParams.user_name" />
+      </div>
       <div>
         <label>Name:</label>
         <input type="text" v-model="newUserParams.name" />
