@@ -6,9 +6,12 @@ export default {
     return {
       games: [],
       currentGame: {},
+      entries: [],
       nextPage: "",
       previousPage: "",
       isLoggedIn: !!localStorage.jwt,
+      isInLibrary: false,
+      gameIDs: [],
     };
   },
   created: function () {
@@ -16,10 +19,20 @@ export default {
       this.games = response.data["results"];
       this.nextPage = response.data["next"];
       this.previousPage = response.data["previous"];
-      console.log(this.games);
-      console.log(this.nextPage);
-      console.log(this.previousPage);
+      console.log("games", this.games);
+      console.log("next page:", this.nextPage);
+      console.log("previous page:", this.previousPage);
     });
+    if (this.isLoggedIn) {
+      axios.get("http://localhost:3000/libraries").then((response) => {
+        console.log("entries", response.data);
+        this.entries = response.data;
+        this.entries.forEach((i) => {
+          this.gameIDs.push(i.game_id);
+        });
+      });
+      console.log("gameIDs", this.gameIDs);
+    }
   },
   watch: {
     $route: function () {
@@ -39,6 +52,9 @@ export default {
         })
         .catch((error) => console.log(error.response));
     },
+    inLibrary: function (game) {
+      return this.gameIDs.includes(game.id);
+    },
   },
 };
 </script>
@@ -52,7 +68,12 @@ export default {
     <br />
     <!-- button to add to library when logged in -->
     <span v-if="isLoggedIn">
-      <button v-on:click="addLibrary(game)">Add to library</button>
+      <span v-if="!inLibrary(game)">
+        <button v-on:click="addLibrary(game)">Add to library</button>
+      </span>
+      <span v-if="inLibrary(game)">
+        <button>Game added</button>
+      </span>
     </span>
   </div>
 </template>
