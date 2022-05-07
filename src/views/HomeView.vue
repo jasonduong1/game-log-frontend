@@ -8,6 +8,7 @@ export default {
       currentGame: {},
       nextPage: "",
       previousPage: "",
+      isLoggedIn: !!localStorage.jwt,
     };
   },
   created: function () {
@@ -19,6 +20,11 @@ export default {
       console.log(this.nextPage);
       console.log(this.previousPage);
     });
+  },
+  watch: {
+    $route: function () {
+      this.isLoggedIn = !!localStorage.jwt;
+    },
   },
   methods: {
     addLibrary: function (game) {
@@ -45,7 +51,9 @@ export default {
     <a v-bind:href="`/games/${game.id}`" class="btn btn-primary">More info</a>
     <br />
     <!-- button to add to library when logged in -->
-    <button v-on:click="addLibrary(game)">Add to library</button>
+    <span v-if="isLoggedIn">
+      <button v-on:click="addLibrary(game)">Add to library</button>
+    </span>
   </div>
 </template>
 
