@@ -7,13 +7,7 @@ export default {
       input: "",
       results: [],
       currentGame: {},
-      isLoggedIn: !!localStorage.jwt,
     };
-  },
-  watch: {
-    $route: function () {
-      this.isLoggedIn = !!localStorage.jwt;
-    },
   },
   methods: {
     search: function () {
@@ -51,8 +45,6 @@ export default {
     <a v-bind:href="`/games/${result.id}`" class="btn btn-primary">More info</a>
     <br />
     <!-- button to add to library when logged in -->
-    <span v-if="isLoggedIn">
-      <button v-on:click="addLibrary(result)">Add to library</button>
-    </span>
+    <button v-on:click="addLibrary(result)">Add to library</button>
   </div>
 </template>
