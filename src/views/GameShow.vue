@@ -8,7 +8,13 @@ export default {
       currentGame: {},
       entry: {},
       currentEntry: {},
+      isLoggedIn: !!localStorage.jwt,
     };
+  },
+  watch: {
+    $route: function () {
+      this.isLoggedIn = !!localStorage.jwt;
+    },
   },
   created: function () {
     axios.get("http://localhost:3000/games/" + this.$route.params.id).then((response) => {
@@ -66,17 +72,19 @@ export default {
   <p>{{ game.description_raw }}</p>
   <!-- when logged in -->
   <!-- button to add to library -->
-  <button v-on:click="addLibrary(game)">Add to library</button>
-  <!-- when logged in and title added -->
-  <!-- remove button replaces add button -->
-  <!-- body for user progress, etc -->
-  <p>Progress: {{ entry.progress }}</p>
-  <p>Rating: {{ entry.rating }}</p>
-  <p>Review: {{ entry.review }}</p>
-  <p>Thoughts/notes: {{ entry.note }}</p>
-  <!-- edit button -->
-  <button v-on:click="destroyEntry(entry)">Remove</button>
-  <button v-on:click="editEntry(entry)">edit</button>
+  <span v-if="isLoggedIn">
+    <button v-on:click="addLibrary(game)">Add to library</button>
+    <!-- when logged in and title added -->
+    <!-- remove button replaces add button -->
+    <!-- body for user progress, etc -->
+    <p>Progress: {{ entry.progress }}</p>
+    <p>Rating: {{ entry.rating }}</p>
+    <p>Review: {{ entry.review }}</p>
+    <p>Thoughts/notes: {{ entry.note }}</p>
+    <!-- edit button -->
+    <button v-on:click="destroyEntry(entry)">Remove</button>
+    <button v-on:click="editEntry(entry)">edit</button>
+  </span>
   <dialog id="game-details">
     <form method="dialog" v-on:submit.prevent="updateEntry(entry)">
       <h2>Edit Log</h2>

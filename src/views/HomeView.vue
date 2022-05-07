@@ -8,7 +8,13 @@ export default {
       currentGame: {},
       nextPage: "",
       previousPage: "",
+      isLoggedIn: !!localStorage.jwt,
     };
+  },
+  watch: {
+    $route: function () {
+      this.isLoggedIn = !!localStorage.jwt;
+    },
   },
   created: function () {
     axios.get("http://localhost:3000/games").then((response) => {
@@ -45,7 +51,9 @@ export default {
     <a v-bind:href="`/games/${game.id}`" class="btn btn-primary">More info</a>
     <br />
     <!-- button to add to library when logged in -->
-    <button v-on:click="addLibrary(game)">Add to library</button>
+    <span v-if="isLoggedIn">
+      <button v-on:click="addLibrary(game)">Add to library</button>
+    </span>
   </div>
 </template>
 
