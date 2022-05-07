@@ -9,6 +9,7 @@ export default {
       entry: {},
       currentEntry: {},
       isLoggedIn: !!localStorage.jwt,
+      isInLibrary: false,
     };
   },
   created: function () {
@@ -16,10 +17,13 @@ export default {
       console.log(response.data);
       this.game = response.data;
     });
-    axios.get("http://localhost:3000/libraries?game_id=" + this.$route.params.id).then((response) => {
-      console.log(response.data);
-      this.entry = response.data;
-    });
+    if (this.isLoggedIn) {
+      axios.get("http://localhost:3000/libraries?game_id=" + this.$route.params.id).then((response) => {
+        console.log("entry", response.data);
+        this.entry = response.data;
+        this.isInLibrary = !!this.entry;
+      });
+    }
   },
   watch: {
     $route: function () {
@@ -36,6 +40,7 @@ export default {
         .post("http://localhost:3000/libraries", this.currentGame)
         .then((response) => {
           console.log("Success", response.data);
+          this.$router.go();
         })
         .catch((error) => console.log(error.response));
     },
@@ -70,20 +75,18 @@ export default {
   <img :src="game.background_image" v-bind:alt="game.name" class="artwork" />
   <h4>Released: {{ game.released }}</h4>
   <p>{{ game.description_raw }}</p>
-  <!-- when logged in -->
-  <!-- button to add to library -->
   <span v-if="isLoggedIn">
-    <button v-on:click="addLibrary(game)">Add to library</button>
-    <!-- when logged in and title added -->
-    <!-- remove button replaces add button -->
-    <!-- body for user progress, etc -->
-    <p>Progress: {{ entry.progress }}</p>
-    <p>Rating: {{ entry.rating }}</p>
-    <p>Review: {{ entry.review }}</p>
-    <p>Thoughts/notes: {{ entry.note }}</p>
-    <!-- edit button -->
-    <button v-on:click="destroyEntry(entry)">Remove</button>
-    <button v-on:click="editEntry(entry)">edit</button>
+    <span v-if="!isInLibrary">
+      <button v-on:click="addLibrary(game)">Add to library</button>
+    </span>
+    <span v-if="isInLibrary">
+      <p>Progress: {{ entry.progress }}</p>
+      <p>Rating: {{ entry.rating }}</p>
+      <p>Review: {{ entry.review }}</p>
+      <p>Thoughts/notes: {{ entry.note }}</p>
+      <button v-on:click="destroyEntry(entry)">Remove</button>
+      <button v-on:click="editEntry(entry)">edit</button>
+    </span>
   </span>
   <dialog id="game-details">
     <form method="dialog" v-on:submit.prevent="updateEntry(entry)">
