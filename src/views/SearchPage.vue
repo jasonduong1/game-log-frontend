@@ -7,14 +7,14 @@ export default {
       input: "",
       results: [],
       currentGame: {},
-      isLoggedIn: !!localStorage.jwt,
+      // isLoggedIn: !!localStorage.jwt,
     };
   },
-  watch: {
-    $route: function () {
-      this.isLoggedIn = !!localStorage.jwt;
-    },
-  },
+  // watch: {
+  //   $route: function () {
+  //     this.isLoggedIn = !!localStorage.jwt;
+  //   },
+  // },
   methods: {
     search: function () {
       console.log("search query for", this.input);
@@ -23,18 +23,18 @@ export default {
         console.log(this.results);
       });
     },
-    addLibrary: function (result) {
-      (this.currentGame.game_id = result.id),
-        (this.currentGame.title = result.name),
-        (this.currentGame.image = result.background_image),
-        console.log("title to be added", this.currentGame);
-      axios
-        .post("http://localhost:3000/libraries", this.currentGame)
-        .then((response) => {
-          console.log("Success", response.data);
-        })
-        .catch((error) => console.log(error.response));
-    },
+    // addLibrary: function (result) {
+    //   (this.currentGame.game_id = result.id),
+    //     (this.currentGame.title = result.name),
+    //     (this.currentGame.image = result.background_image),
+    //     console.log("title to be added", this.currentGame);
+    //   axios
+    //     .post("http://localhost:3000/libraries", this.currentGame)
+    //     .then((response) => {
+    //       console.log("Success", response.data);
+    //     })
+    //     .catch((error) => console.log(error.response));
+    // },
   },
 };
 </script>
@@ -51,8 +51,8 @@ export default {
     <a v-bind:href="`/games/${result.id}`" class="btn btn-primary">More info</a>
     <br />
     <!-- button to add to library when logged in -->
-    <span v-if="isLoggedIn">
+    <!-- <span v-if="isLoggedIn">
       <button v-on:click="addLibrary(result)">Add to library</button>
-    </span>
+    </span> -->
   </div>
 </template>
