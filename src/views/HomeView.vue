@@ -140,21 +140,6 @@ export default {
       </div>
     </section>
     <!-- End Portfolio Section -->
-    <!-- <h1>Games</h1>
-    <div v-for="game in games" :key="game.id" class="app">
-      <img :src="game.background_image" v-bind:alt="game.name" class="artwork" />
-      <h3>{{ game.name }}</h3>
-      <a v-bind:href="`/games/${game.id}`" class="btn btn-primary">More info</a>
-      <br />
-      <span v-if="isLoggedIn">
-        <span v-if="!inLibrary(game)">
-          <button v-on:click="addLibrary(game)">Add to library</button>
-        </span>
-        <span v-if="inLibrary(game)">
-          <button>Game added</button>
-        </span>
-      </span>
-    </div> -->
   </div>
 </template>
 

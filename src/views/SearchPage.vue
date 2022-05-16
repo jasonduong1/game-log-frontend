@@ -24,34 +24,6 @@ export default {
 </script>
 
 <template>
-  <!-- <div id="hero" class="hero route bg-image" style="background-image: url(assets/img/hero-bg.jpg)">
-    <div class="overlay-itro"></div>
-    <div class="hero-content display-table">
-      <div class="table-cell">
-        <div class="container">
-          <h1 class="hero-title mb-4">Search.</h1>
-          <div class="small-search-wrap">
-            <div class="search-form">
-              <form v-on:submit.prevent="search()">
-                <div class="form-group">
-                  <input
-                    type="text"
-                    placeholder="Search games here ..."
-                    maxlength="100"
-                    class="form-control"
-                    name="name"
-                    id="name"
-                    v-model="input"
-                    href="#results"
-                  />
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
   <section id="results">
     <div class="search mb-5 py-5">
       <hr />
@@ -108,17 +80,6 @@ export default {
         </div>
       </div>
     </div>
-    <!-- <form v-on:submit.prevent="search()">
-    <input type="text" v-model="input" placeholder="Search for games..." />
-    <input type="submit" value="Submit" />
-  </form>
-  <h1>Search results</h1>
-  <div v-for="result in results" :key="result">
-    <img :src="result.background_image" v-bind:alt="result.name" class="artwork" />
-    <p>{{ result.name }}</p>
-    <a v-bind:href="`/games/${result.id}`" class="btn btn-primary">More info</a>
-    <br />
-  </div> -->
   </section>
 </template>
 <style>

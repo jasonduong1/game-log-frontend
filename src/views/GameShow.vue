@@ -229,59 +229,11 @@ export default {
                   placeholder="Note"
                 ></textarea>
               </div>
-              <!-- <button class="btn btn-success btn-custom waves-effect waves-light m-b-5" v-on:click="editEntry(entry)">
-              Edit
-            </button>
-            <button class="btn btn-success btn-custom waves-effect waves-light m-b-5" v-on:click="destroyEntry(entry)">
-              Remove
-            </button> -->
             </form>
           </span>
         </div>
       </div>
     </div>
-    <!-- <h1>{{ game.name }}</h1>
-    <img :src="game.background_image" v-bind:alt="game.name" class="artwork" />
-    <h4>Released: {{ game.released }}</h4>
-    <p>{{ game.description_raw }}</p> -->
-    <!-- <span v-if="isLoggedIn">
-      <span v-if="!isInLibrary">
-        <button v-on:click="addLibrary(game)">Add to library</button>
-      </span>
-      <span v-if="isInLibrary">
-        <p>Progress: {{ entry.progress }}</p>
-        <p>Rating: {{ entry.rating }}</p>
-        <p>Review: {{ entry.review }}</p>
-        <p>Thoughts/notes: {{ entry.note }}</p>
-        <button v-on:click="destroyEntry(entry)">Remove</button>
-        <button v-on:click="editEntry(entry)">edit</button>
-      </span>
-    </span> -->
-    <!-- <dialog id="game-details">
-      <form method="dialog" v-on:submit.prevent="updateEntry(entry)">
-        <h2>Edit Log</h2>
-        <h3>{{ currentEntry.title }}</h3>
-        <div>
-          Progress:
-          <input type="text" v-model="currentEntry.progress" />
-        </div>
-        <div>
-          Rating:
-          <input type="text" v-model="currentEntry.rating" />
-        </div>
-        <div>
-          Review:
-          <input type="text" v-model="currentEntry.review" />
-        </div>
-        <div>
-          Thoughts/notes:
-          <input type="text" v-model="currentEntry.note" />
-          <br />
-          <input type="submit" value="Update" />
-        </div>
-        <a href="/libraries">Back to log</a>
-      </form>
-    </dialog> -->
   </div>
 </template>
 <style>
