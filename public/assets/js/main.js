@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * Template Name: DevFolio - v4.7.1
  * Template URL: https://bootstrapmade.com/devfolio-bootstrap-portfolio-html-template/
