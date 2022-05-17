@@ -13,7 +13,7 @@ export default {
   methods: {
     search: function () {
       console.log("search query for", this.input);
-      axios.get("http://localhost:3000/games?search=" + this.input).then((response) => {
+      axios.get("/games?search=" + this.input).then((response) => {
         this.results = response.data["results"];
         console.log(response.data);
         this.$router.push("/search#results");

@@ -10,21 +10,21 @@ export default {
     };
   },
   created: function () {
-    axios.get("http://localhost:3000/libraries").then((response) => {
+    axios.get("/libraries").then((response) => {
       this.entries = response.data;
       console.log(this.entries);
     });
   },
   methods: {
     editEntry: function (entry) {
-      axios.get("http://localhost:3000/libraries/" + entry.id).then((response) => {
+      axios.get("/libraries/" + entry.id).then((response) => {
         this.currentEntry = response.data;
         console.log(this.currentEntry);
         // document.querySelector("#game-details").showModal();
       });
     },
     destroyEntry: function (entry) {
-      axios.delete("http://localhost:3000/libraries/" + entry.id).then((response) => {
+      axios.delete("/libraries/" + entry.id).then((response) => {
         console.log("entry destroy", response);
         this.$router.go();
       });
@@ -32,7 +32,7 @@ export default {
     updateEntry: function (entry) {
       console.log("Update entry.");
       axios
-        .patch("http://localhost:3000/libraries/" + entry.id, this.currentEntry)
+        .patch("/libraries/" + entry.id, this.currentEntry)
         .then((response) => {
           console.log("Edited", response.data);
           this.$router.go();

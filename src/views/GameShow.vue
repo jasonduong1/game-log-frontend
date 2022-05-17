@@ -16,14 +16,14 @@ export default {
     };
   },
   created: function () {
-    axios.get("http://localhost:3000/games/" + this.$route.params.id).then((response) => {
+    axios.get("/games/" + this.$route.params.id).then((response) => {
       console.log(response.data);
       this.game = response.data;
       this.genres = response.data["genres"];
       console.log("genres", this.genres);
     });
     if (this.isLoggedIn) {
-      axios.get("http://localhost:3000/libraries?game_id=" + this.$route.params.id).then((response) => {
+      axios.get("/libraries?game_id=" + this.$route.params.id).then((response) => {
         console.log("entry", response.data);
         this.entry = response.data;
         this.isInLibrary = !!this.entry;
@@ -42,7 +42,7 @@ export default {
         (this.currentGame.image = game.background_image),
         console.log("new entry", this.currentGame);
       axios
-        .post("http://localhost:3000/libraries", this.currentGame)
+        .post("/libraries", this.currentGame)
         .then((response) => {
           console.log("Success", response.data);
           this.$router.go();
@@ -61,7 +61,7 @@ export default {
       this.$router.go();
     },
     destroyEntry: function (entry) {
-      axios.delete("http://localhost:3000/libraries/" + entry.id).then((response) => {
+      axios.delete("/libraries/" + entry.id).then((response) => {
         console.log("entry destroy", response);
         this.$router.go();
       });
@@ -69,7 +69,7 @@ export default {
     updateEntry: function (entry) {
       console.log("Update entry.");
       axios
-        .patch("http://localhost:3000/libraries/" + entry.id, this.entry)
+        .patch("/libraries/" + entry.id, this.entry)
         .then((response) => {
           console.log("Edited", response.data);
           this.$router.go();
