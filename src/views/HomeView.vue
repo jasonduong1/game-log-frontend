@@ -57,6 +57,9 @@ export default {
     inLibrary: function (game) {
       return this.gameIDs.includes(game.id);
     },
+    redirectLogin: function () {
+      this.$router.push("/login");
+    },
   },
 };
 </script>
@@ -119,13 +122,14 @@ export default {
                       <span class="w-date">{{ game.released }}</span>
                     </div>
                   </div>
+                  <span v-if="!isLoggedIn">
+                    <span v-on:click="redirectLogin" class="bi bi-plus-circle"></span>
+                  </span>
                   <div class="col-sm-4" v-if="isLoggedIn">
                     <span v-if="isLoggedIn">
                       <div class="w-like">
                         <span v-if="!inLibrary(game)">
-                          <!-- <a v-bind:href="`/games/${game.id}`"> -->
                           <span v-on:click="addLibrary(game)" class="bi bi-plus-circle"></span>
-                          <!-- </a> -->
                         </span>
                       </div>
                       <div class="w-like2">
