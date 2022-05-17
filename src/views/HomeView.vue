@@ -122,22 +122,20 @@ export default {
                       <span class="w-date">{{ game.released }}</span>
                     </div>
                   </div>
-                  <span v-if="!isLoggedIn">
-                    <span v-on:click="redirectLogin" class="bi bi-plus-circle"></span>
-                  </span>
-                  <div class="col-sm-4" v-if="isLoggedIn">
-                    <span v-if="isLoggedIn">
-                      <div class="w-like">
-                        <span v-if="!inLibrary(game)">
-                          <span v-on:click="addLibrary(game)" class="bi bi-plus-circle"></span>
-                        </span>
-                      </div>
-                      <div class="w-like2">
-                        <span v-if="inLibrary(game)">
-                          <i class="bi bi-check-circle"></i>
-                        </span>
-                      </div>
-                    </span>
+                  <div class="col-sm-4">
+                    <div class="w-like" v-if="!isLoggedIn">
+                      <span v-on:click="redirectLogin" class="bi bi-plus-circle"></span>
+                    </div>
+                    <div class="w-like" v-if="isLoggedIn">
+                      <span v-if="!inLibrary(game)">
+                        <span v-on:click="addLibrary(game)" class="bi bi-plus-circle"></span>
+                      </span>
+                    </div>
+                    <div class="w-like2" v-if="isLoggedIn">
+                      <span v-if="inLibrary(game)">
+                        <i class="bi bi-check-circle"></i>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
