@@ -60,6 +60,9 @@ export default {
     editStop: function () {
       this.$router.go();
     },
+    redirectLogin: function () {
+      this.$router.push("/login");
+    },
     destroyEntry: function (entry) {
       axios.delete("/libraries/" + entry.id).then((response) => {
         console.log("entry destroy", response);
@@ -114,6 +117,14 @@ export default {
                 </label>
               </li>
               <li class="media">
+                <span v-if="!isLoggedIn">
+                  <button
+                    class="btn btn-success btn-custom waves-effect waves-light m-b-5"
+                    v-on:click="redirectLogin()"
+                  >
+                    Add to library
+                  </button>
+                </span>
                 <span v-if="isLoggedIn">
                   <span v-if="!isInLibrary">
                     <button
