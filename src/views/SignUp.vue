@@ -75,7 +75,12 @@ export default {
                       />
                       <label class="form-label" for="form3Example4">Password confirmation</label>
                     </div>
-
+                    <div class="text-left mb-4">
+                      <p>
+                        Already a member?
+                        <a href="/login">Login.</a>
+                      </p>
+                    </div>
                     <!-- Submit button -->
                     <button type="submit" class="btn btn-success btn-custom waves-effect waves-light m-b-5">
                       Sign up
