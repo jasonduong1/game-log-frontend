@@ -63,12 +63,16 @@ export default {
 
 <template>
   <div class="app">
-    <div id="hero" class="hero route bg-image" v-if="!isLoggedIn" style="background-image: url(assets/img/hero-bg.jpg)">
+    <!-- <div
+      id="hero"
+      class="hero route bg-image"
+      v-if="!isLoggedIn"
+      style="background-image: url(assets/img/07sbvj4wjnz81.jpeg)"
+    >
       <div class="overlay-itro"></div>
       <div class="hero-content display-table">
         <div class="table-cell">
           <div class="container">
-            <!--<p class="display-6 color-d">Hello, world!</p>-->
             <h1 class="hero-title mb-4">Start building your game library</h1>
             <p class="hero-subtitle">
               <span class="typed" data-typed-items="Halo, Grand Theft Auto V, Final Fantasy, Destiny 2"></span>
@@ -81,8 +85,7 @@ export default {
           </div>
         </div>
       </div>
-    </div>
-    <!-- End Hero Section -->
+    </div> -->
     <!-- ======= Portfolio Section ======= -->
     <section id="popular" class="portfolio-mf sect-pt4 route">
       <span v-if="isLoggedIn"><hr /></span>
@@ -91,7 +94,7 @@ export default {
           <div class="col-sm-12">
             <div class="title-box text-center">
               <h3 class="title-a">Popular Games</h3>
-              <p v-if="!isLoggedIn" class="subtitle-a">Add yours now!</p>
+              <p v-if="!isLoggedIn" class="subtitle-a">Click on title to start building your game log.</p>
               <div class="line-mf"></div>
             </div>
           </div>

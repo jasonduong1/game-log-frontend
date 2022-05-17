@@ -27,7 +27,7 @@ export default {
 
 <template>
   <div class="app">
-    <div id="hero" class="hero route bg-image" style="background-image: url(assets/img/hero-bg.jpg)">
+    <div id="hero" class="hero route bg-image" style="background-image: url(assets/img/07sbvj4wjnz81.jpeg)">
       <div class="overlay-itro"></div>
       <div class="hero-content display-table">
         <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
