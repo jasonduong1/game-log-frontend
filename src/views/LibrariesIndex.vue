@@ -44,7 +44,7 @@ export default {
 </script>
 
 <template>
-  <div class="library mt-0 py-5 mb-5">
+  <div class="library mt-0 p-5 mb-5 mx-5">
     <hr />
     <ol>
       <table class="table">
