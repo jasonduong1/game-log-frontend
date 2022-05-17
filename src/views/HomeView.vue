@@ -16,7 +16,7 @@ export default {
     };
   },
   created: function () {
-    axios.get("http://localhost:3000/games").then((response) => {
+    axios.get("/games").then((response) => {
       this.games = response.data["results"];
       this.nextPage = response.data["next"];
       this.previousPage = response.data["previous"];
@@ -25,7 +25,7 @@ export default {
       console.log("previous page:", this.previousPage);
     });
     if (this.isLoggedIn) {
-      axios.get("http://localhost:3000/libraries").then((response) => {
+      axios.get("/libraries").then((response) => {
         console.log("entries", response.data);
         this.entries = response.data;
         this.entries.forEach((i) => {
@@ -47,7 +47,7 @@ export default {
         (this.currentGame.image = game.background_image),
         console.log("new entry", this.currentGame);
       axios
-        .post("http://localhost:3000/libraries", this.currentGame)
+        .post("/libraries", this.currentGame)
         .then((response) => {
           console.log("Success", response.data);
           this.$router.go();
