@@ -99,23 +99,24 @@ export default {
               <!-- Progress -->
               <label>Progress</label>
               <select class="browser-default custom-select mb-4" v-model="currentEntry.progress">
-                <option value="" disabled>Your Progress</option>
-                <option value="0">{{ currentEntry.progress }}</option>
+                <option value="" disabled>{{ currentEntry.progress }}</option>
+                <!-- <option value="0">{{ entry.progress }}</option> -->
+                <option value=""></option>
                 <option value="Playing">Playing</option>
                 <option value="Dropped">Dropped</option>
-                <option value="Plan to play">Plan to play</option>
+                <!-- <option value="Plan to play">Plan to play</option> -->
                 <option value="Backlog">Backlog</option>
                 <option value="Pre-ordered">Pre-ordered</option>
                 <option value="Completed">Completed</option>
                 <option value="100%">100%</option>
-                <option value="Played enough">Played enough</option>
+                <!-- <option value="Played enough">Played enough</option> -->
               </select>
               <br />
               <!-- Rating -->
               <label>Rating</label>
               <select class="browser-default custom-select mb-4" v-model="currentEntry.rating">
-                <option value="" disabled>Your Rating</option>
-                <option value="0">{{ currentEntry.rating }}</option>
+                <option value="" disabled>Your rating // {{ currentEntry.rating }}</option>
+                <option value=""></option>
                 <option value="10">10</option>
                 <option value="9">9</option>
                 <option value="8">8</option>

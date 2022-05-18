@@ -166,12 +166,12 @@ export default {
                     <option value=""></option>
                     <option value="Playing">Playing</option>
                     <option value="Dropped">Dropped</option>
-                    <option value="Plan to play">Plan to play</option>
+                    <!-- <option value="Plan to play">Plan to play</option> -->
                     <option value="Backlog">Backlog</option>
                     <option value="Pre-ordered">Pre-ordered</option>
                     <option value="Completed">Completed</option>
                     <option value="100%">100%</option>
-                    <option value="Played enough">Played enough</option>
+                    <!-- <option value="Played enough">Played enough</option> -->
                   </select>
                   <div>
                     <button
