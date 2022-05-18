@@ -143,8 +143,8 @@ export default {
                     {{ entry.rating }}
                   </p>
                   <select v-if="onEdit" class="browser-default custom-select mb-4" v-model="entry.rating">
-                    <option value="" disabled>Your Rating</option>
-                    <option value="0">{{ entry.rating }}</option>
+                    <option value="" disabled>Your rating // {{ entry.rating }}</option>
+                    <option value=""></option>
                     <option value="10">10</option>
                     <option value="9">9</option>
                     <option value="8">8</option>
@@ -161,8 +161,9 @@ export default {
                     {{ entry.progress }}
                   </p>
                   <select v-if="onEdit" class="browser-default custom-select mb-4" v-model="entry.progress">
-                    <option value="" disabled>Your Progress</option>
-                    <option value="0">{{ entry.progress }}</option>
+                    <option value="" disabled>{{ entry.progress }}</option>
+                    <!-- <option value="0">{{ entry.progress }}</option> -->
+                    <option value=""></option>
                     <option value="Playing">Playing</option>
                     <option value="Dropped">Dropped</option>
                     <option value="Plan to play">Plan to play</option>
