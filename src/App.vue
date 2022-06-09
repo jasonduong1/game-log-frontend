@@ -37,7 +37,7 @@ export default {
       </div>
     </header>
     <router-view />
-    <footer>
+    <!-- <footer>
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
@@ -51,6 +51,12 @@ export default {
           </div>
         </div>
       </div>
-    </footer>
+    </footer> -->
   </div>
 </template>
+
+<style>
+html {
+  background: url("./assets/nami.webp");
+}
+</style>

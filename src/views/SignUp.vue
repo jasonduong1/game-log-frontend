@@ -27,72 +27,72 @@ export default {
 
 <template>
   <div class="app">
-    <div id="hero" class="hero route bg-image" style="background-image: url(assets/img/07sbvj4wjnz81.jpeg)">
-      <div class="overlay-itro"></div>
-      <div class="hero-content display-table">
-        <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
-          <div class="row gx-lg-5 align-items-center mb-5">
-            <div class="col-lg-3 mb- mb-lg-0" style="z-index: 10"></div>
+    <!-- <div id="hero" class="hero route bg-image" style="background-image: url(assets/img/07sbvj4wjnz81.jpeg)"> -->
+    <div class="overlay-itro"></div>
+    <div class="hero-content display-table">
+      <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+        <div class="row gx-lg-5 align-items-center mb-5">
+          <div class="col-lg-3 mb- mb-lg-0" style="z-index: 10"></div>
 
-            <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
-              <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
-              <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+          <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+            <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+            <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
 
-              <div class="card bg-glass">
-                <div class="card-body px-4 py-4 px-md-5">
-                  <h1 class="hero-title mb-4">Signup.</h1>
-                  <form v-on:submit.prevent="submit()">
-                    <p v-for="error in errors" v-bind:key="error">{{ error }}</p>
-                    <!-- Username input -->
-                    <div class="form-outline mb-2">
-                      <input type="text" id="form3Example2" class="form-control" v-model="newUserParams.user_name" />
-                      <label class="form-label" for="form3Example2">Username</label>
-                    </div>
-                    <!-- Name input -->
-                    <div class="form-outline mb-2">
-                      <input type="text" id="form3Example1" class="form-control" v-model="newUserParams.name" />
-                      <label class="form-label" for="form3Example1">Name</label>
-                    </div>
-                    <!-- Email input -->
-                    <div class="form-outline mb-2">
-                      <input type="email" id="form3Example3" class="form-control" v-model="newUserParams.email" />
-                      <label class="form-label" for="form3Example3">Email address</label>
-                    </div>
+            <div class="card bg-glass">
+              <div class="card-body px-4 py-4 px-md-5">
+                <h1 class="hero-title mb-4">Signup.</h1>
+                <form v-on:submit.prevent="submit()">
+                  <p v-for="error in errors" v-bind:key="error">{{ error }}</p>
+                  <!-- Username input -->
+                  <div class="form-outline mb-2">
+                    <input type="text" id="form3Example2" class="form-control" v-model="newUserParams.user_name" />
+                    <label class="form-label" for="form3Example2">Username</label>
+                  </div>
+                  <!-- Name input -->
+                  <div class="form-outline mb-2">
+                    <input type="text" id="form3Example1" class="form-control" v-model="newUserParams.name" />
+                    <label class="form-label" for="form3Example1">Name</label>
+                  </div>
+                  <!-- Email input -->
+                  <div class="form-outline mb-2">
+                    <input type="email" id="form3Example3" class="form-control" v-model="newUserParams.email" />
+                    <label class="form-label" for="form3Example3">Email address</label>
+                  </div>
 
-                    <!-- Password input -->
-                    <div class="form-outline mb-2">
-                      <input type="password" id="form3Example4" class="form-control" v-model="newUserParams.password" />
-                      <label class="form-label" for="form3Example4">Password</label>
-                    </div>
+                  <!-- Password input -->
+                  <div class="form-outline mb-2">
+                    <input type="password" id="form3Example4" class="form-control" v-model="newUserParams.password" />
+                    <label class="form-label" for="form3Example4">Password</label>
+                  </div>
 
-                    <!-- Password confirmation -->
-                    <div class="form-outline mb-4">
-                      <input
-                        type="password"
-                        id="form3Example4"
-                        class="form-control"
-                        v-model="newUserParams.password_confirmation"
-                      />
-                      <label class="form-label" for="form3Example4">Password confirmation</label>
-                    </div>
-                    <div class="text-left mb-4">
-                      <p>
-                        Already a member?
-                        <a href="/login">Login.</a>
-                      </p>
-                    </div>
-                    <!-- Submit button -->
-                    <button type="submit" class="btn btn-success btn-custom waves-effect waves-light m-b-5">
-                      Sign up
-                    </button>
-                  </form>
-                </div>
+                  <!-- Password confirmation -->
+                  <div class="form-outline mb-4">
+                    <input
+                      type="password"
+                      id="form3Example4"
+                      class="form-control"
+                      v-model="newUserParams.password_confirmation"
+                    />
+                    <label class="form-label" for="form3Example4">Password confirmation</label>
+                  </div>
+                  <div class="text-left mb-4">
+                    <p>
+                      Already a member?
+                      <a href="/login">Login.</a>
+                    </p>
+                  </div>
+                  <!-- Submit button -->
+                  <button type="submit" class="btn btn-success btn-custom waves-effect waves-light m-b-5">
+                    Sign up
+                  </button>
+                </form>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- </div> -->
   </div>
 </template>
 <style>

@@ -11,6 +11,9 @@
 body {
   background-color: #5900ff;
   color: #4e4e4e;
+  padding: 0;
+  margin: 0;
+  width: 100%;
 }
 
 h1,
@@ -1292,8 +1295,11 @@ a:hover {
 footer {
   text-align: center;
   color: #fff;
-  padding: 25px 0;
-  background: #000000;
+  padding: 10px 0;
+  background: #00000022;
+  bottom:0;
+  margin-bottom: 0px;
+  width: 100%;
 }
 footer .copyright {
   margin-bottom: 0.3rem;
