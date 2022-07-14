@@ -21,8 +21,6 @@ export default {
       this.nextPage = response.data["next"];
       this.previousPage = response.data["previous"];
       console.log("games", this.games);
-      console.log("next page:", this.nextPage);
-      console.log("previous page:", this.previousPage);
     });
     if (this.isLoggedIn) {
       axios.get("/libraries").then((response) => {
