@@ -12,7 +12,6 @@ export default {
   created: function () {
     axios.get("/libraries").then((response) => {
       this.entries = response.data;
-      console.log(this.entries);
     });
   },
   methods: {
@@ -20,7 +19,6 @@ export default {
       axios.get("/libraries/" + entry.id).then((response) => {
         this.currentEntry = response.data;
         console.log(this.currentEntry);
-        // document.querySelector("#game-details").showModal();
       });
     },
     destroyEntry: function (entry) {
@@ -100,16 +98,13 @@ export default {
               <label>Progress</label>
               <select class="browser-default custom-select mb-4" v-model="currentEntry.progress">
                 <option value="" disabled>{{ currentEntry.progress }}</option>
-                <!-- <option value="0">{{ entry.progress }}</option> -->
                 <option value=""></option>
                 <option value="Playing">Playing</option>
                 <option value="Dropped">Dropped</option>
-                <!-- <option value="Plan to play">Plan to play</option> -->
                 <option value="Backlog">Backlog</option>
                 <option value="Pre-ordered">Pre-ordered</option>
                 <option value="Completed">Completed</option>
                 <option value="100%">100%</option>
-                <!-- <option value="Played enough">Played enough</option> -->
               </select>
               <br />
               <!-- Rating -->

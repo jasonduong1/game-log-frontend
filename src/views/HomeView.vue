@@ -20,11 +20,9 @@ export default {
       this.games = response.data["results"];
       this.nextPage = response.data["next"];
       this.previousPage = response.data["previous"];
-      console.log("games", this.games);
     });
     if (this.isLoggedIn) {
       axios.get("/libraries").then((response) => {
-        console.log("entries", response.data);
         this.entries = response.data;
         this.entries.forEach((i) => {
           this.gameIDs.push(i.game_id);
@@ -43,7 +41,6 @@ export default {
       (this.currentGame.game_id = game.id),
         (this.currentGame.title = game.name),
         (this.currentGame.image = game.background_image),
-        console.log("new entry", this.currentGame);
       axios
         .post("/libraries", this.currentGame)
         .then((response) => {
@@ -64,30 +61,6 @@ export default {
 
 <template>
   <div class="app">
-    <!-- <div
-      id="hero"
-      class="hero route bg-image"
-      v-if="!isLoggedIn"
-      style="background-image: url(assets/img/07sbvj4wjnz81.jpeg)"
-    >
-      <div class="overlay-itro"></div>
-      <div class="hero-content display-table">
-        <div class="table-cell">
-          <div class="container">
-            <h1 class="hero-title mb-4">Start building your game library</h1>
-            <p class="hero-subtitle">
-              <span class="typed" data-typed-items="Halo, Grand Theft Auto V, Final Fantasy, Destiny 2"></span>
-            </p>
-            <p class="pt-3">
-              <a class="btn btn-success btn-custom waves-effect waves-light m-b-5" href="#popular" role="button">
-                Browse popular titles
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- ======= Portfolio Section ======= -->
     <section id="popular" class="portfolio-mf sect-pt4 route">
       <span v-if="isLoggedIn"><hr /></span>
       <div class="container mt-0 pt-3">
@@ -142,15 +115,10 @@ export default {
         </div>
       </div>
     </section>
-    <!-- End Portfolio Section -->
   </div>
 </template>
 
 <style>
-/* img {
-  height: 300px;
-  object-fit: cover;
-} */
 .btn {
   -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);

@@ -17,14 +17,12 @@ export default {
   },
   created: function () {
     axios.get("/games/" + this.$route.params.id).then((response) => {
-      console.log(response.data);
       this.game = response.data;
       this.genres = response.data["genres"];
       console.log("genres", this.genres);
     });
     if (this.isLoggedIn) {
       axios.get("/libraries?game_id=" + this.$route.params.id).then((response) => {
-        console.log("entry", response.data);
         this.entry = response.data;
         this.isInLibrary = !!this.entry;
       });
@@ -40,7 +38,6 @@ export default {
       (this.currentGame.game_id = game.id),
         (this.currentGame.title = game.name),
         (this.currentGame.image = game.background_image),
-        console.log("new entry", this.currentGame);
       axios
         .post("/libraries", this.currentGame)
         .then((response) => {
@@ -51,11 +48,6 @@ export default {
     },
     editEntry: function () {
       this.onEdit = true;
-      // axios.get("http://localhost:3000/libraries/" + entry.id).then((response) => {
-      //   this.currentEntry = response.data;
-      //   console.log(this.currentEntry);
-      //   document.querySelector("#game-details").showModal();
-      // });
     },
     editStop: function () {
       this.$router.go();
@@ -70,7 +62,6 @@ export default {
       });
     },
     updateEntry: function (entry) {
-      console.log("Update entry.");
       axios
         .patch("/libraries/" + entry.id, this.entry)
         .then((response) => {
@@ -162,16 +153,13 @@ export default {
                   </p>
                   <select v-if="onEdit" class="browser-default custom-select mb-4" v-model="entry.progress">
                     <option value="" disabled>{{ entry.progress }}</option>
-                    <!-- <option value="0">{{ entry.progress }}</option> -->
                     <option value=""></option>
                     <option value="Playing">Playing</option>
                     <option value="Dropped">Dropped</option>
-                    <!-- <option value="Plan to play">Plan to play</option> -->
                     <option value="Backlog">Backlog</option>
                     <option value="Pre-ordered">Pre-ordered</option>
                     <option value="Completed">Completed</option>
                     <option value="100%">100%</option>
-                    <!-- <option value="Played enough">Played enough</option> -->
                   </select>
                   <div>
                     <button

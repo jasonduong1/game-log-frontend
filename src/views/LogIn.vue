@@ -30,7 +30,6 @@ export default {
 </script>
 
 <template>
-  <!-- <div class="login hero route bg-image" style="background-image: url(assets/img/07sbvj4wjnz81.jpeg)"> -->
   <div class="overlay-itro"></div>
   <div class="hero-content display-table">
     <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
@@ -84,23 +83,6 @@ export default {
       </div>
     </div>
   </div>
-
-  <!-- <form v-on:submit.prevent="submit()">
-      <h1>Login</h1>
-      <ul>
-        <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
-      </ul>
-      <div>
-        <label>Email:</label>
-        <input type="email" v-model="newSessionParams.email" />
-      </div>
-      <div>
-        <label>Password:</label>
-        <input type="password" v-model="newSessionParams.password" />
-      </div>
-      <input type="submit" value="Submit" />
-    </form> -->
-  <!-- </div> -->
 </template>
 <style>
 .divider:after,
