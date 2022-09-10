@@ -1,8 +1,10 @@
-# GameLog - client side
+# GameLog - Frontend
 
 ![alt text](https://github.com/jasonduong1/game-log-frontend/blob/main/ss-desc.jpg)
+
 Check out deployed site [here](https://game-log.netlify.app/).
-Link [here](https://github.com/jasonduong1/game-log-backend) for server side.
+
+Link [here](https://github.com/jasonduong1/game-log-backend) for the Backend.
 
 ## Project setup
 
