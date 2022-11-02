@@ -1,6 +1,6 @@
 # GameLog - Frontend
 
-![alt text](https://github.com/jasonduong1/game-log-frontend/blob/main/ss-desc.jpg)
+![alt text](https://github.com/jasonduong1/game-log-frontend/blob/main/src/assets/ss-desc.jpg)
 
 Check out deployed site [here](https://game-log.netlify.app/).
 
